@@ -1,0 +1,5 @@
+describe("Feature", () => {
+  it("passes smoke test", () => {
+    expect(true).toBe(true);
+  });
+});
