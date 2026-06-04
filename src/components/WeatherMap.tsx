@@ -16,7 +16,7 @@ const WeatherMap: React.FC<WeatherMapProps> = ({ lat, lon }) => {
       />
       <Marker position={[lat, lon]}>
         <Popup>
-          Weather Location
+          Weather location
         </Popup>
       </Marker>
     </MapContainer>

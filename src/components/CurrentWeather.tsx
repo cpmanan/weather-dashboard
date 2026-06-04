@@ -12,8 +12,7 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = ({ data }) => {
       <p>{data.weatherCondition}</p>
       <p>{data.temperature}°C</p>
       <p>Feels Like: {data.feelsLike}°C</p>
-      <p>Min: {data.minTemperature}°C</p>
-      <p>Max: {data.maxTemperature}°C</p>
+      <p>Min: {data.minTemp}°C, Max: {data.maxTemp}°C</p>
     </div>
   );
 };

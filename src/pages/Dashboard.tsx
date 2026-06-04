@@ -15,14 +15,15 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div data-testid="dashboard">
+    <div>
       <SearchBar onSearch={handleSearch} />
       {isLoading && <p>Loading...</p>}
       {error && <p>City not found. Please check spelling and try again.</p>}
       {data && (
         <>
           <CurrentWeather data={data} />
-          <WeatherMap lat={data.coord.lat} lon={data.coord.lon} />
+          <WeatherMap lat={data.lat} lon={data.lon} />
+          {/* Add more components like ForecastCard and WeatherChart here */}
         </>
       )}
     </div>

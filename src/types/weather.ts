@@ -1,15 +1,13 @@
 export interface WeatherData {
   city: string;
   country: string;
-  weatherCondition: string;
   temperature: number;
   feelsLike: number;
-  minTemperature: number;
-  maxTemperature: number;
-  coord: {
-    lat: number;
-    lon: number;
-  };
+  minTemp: number;
+  maxTemp: number;
+  weatherCondition: string;
+  lat: number;
+  lon: number;
 }
 
 export interface ForecastData {
