@@ -8,9 +8,9 @@ interface WeatherChartProps {
 
 const WeatherChart: React.FC<WeatherChartProps> = ({ data }) => {
   return (
-    <ResponsiveContainer width="100%" height={300}>
-      <LineChart data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+    <ResponsiveContainer width="100%" height={300} data-testid="weather-chart">
+      <LineChart data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="time" />
         <YAxis />
         <Tooltip />

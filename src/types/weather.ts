@@ -1,22 +1,22 @@
 export interface WeatherData {
   city: string;
   country: string;
+  weatherCondition: string;
   temperature: number;
   feelsLike: number;
-  minTemp: number;
-  maxTemp: number;
-  condition: string;
-  icon: string;
+  minTemperature: number;
+  maxTemperature: number;
+  coord: {
+    lat: number;
+    lon: number;
+  };
 }
 
 export interface ForecastData {
   day: string;
-  date: string;
+  weatherIcon: string;
   minTemp: number;
   maxTemp: number;
-  rainProbability: number;
-  condition: string;
-  icon: string;
 }
 
 export interface ChartData {

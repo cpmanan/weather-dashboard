@@ -7,11 +7,9 @@ interface ForecastCardProps {
 
 const ForecastCard: React.FC<ForecastCardProps> = ({ forecast }) => {
   return (
-    <div className="p-4 bg-white rounded shadow-md">
-      <p>{forecast.day}, {forecast.date}</p>
-      <img src={forecast.icon} alt={forecast.condition} className="w-8 h-8" />
-      <p>{forecast.minTemp}°C / {forecast.maxTemp}°C</p>
-      <p>Rain: {forecast.rainProbability}%</p>
+    <div data-testid="forecast-card">
+      <h3>{forecast.day}</h3>
+      <p>{forecast.weatherIcon} {forecast.minTemp}° / {forecast.maxTemp}°</p>
     </div>
   );
 };

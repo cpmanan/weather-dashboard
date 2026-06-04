@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchBar from '../components/SearchBar';
 import CurrentWeather from '../components/CurrentWeather';
 import ForecastCard from '../components/ForecastCard';
 import WeatherChart from '../components/WeatherChart';
 import WeatherMap from '../components/WeatherMap';
-import useWeather from '../hooks/useWeather';
+import { useWeather } from '../hooks/useWeather';
 
 const Dashboard: React.FC = () => {
-  const { weatherData, loading, error, getWeather } = useWeather();
+  const [city, setCity] = useState('');
+  const { data, error, isLoading } = useWeather(city);
+
+  const handleSearch = (query: string) => {
+    setCity(query);
+  };
 
   return (
-    <div className="container mx-auto p-4">
-      <SearchBar onSearch={getWeather} />
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      {weatherData && (
+    <div data-testid="dashboard">
+      <SearchBar onSearch={handleSearch} />
+      {isLoading && <p>Loading...</p>}
+      {error && <p>City not found. Please check spelling and try again.</p>}
+      {data && (
         <>
-          <CurrentWeather data={weatherData} />
-          <WeatherMap lat={weatherData.lat} lon={weatherData.lon} city={weatherData.city} />
-          {/* Add ForecastCard and WeatherChart components here */}
+          <CurrentWeather data={data} />
+          <WeatherMap lat={data.coord.lat} lon={data.coord.lon} />
         </>
       )}
     </div>
