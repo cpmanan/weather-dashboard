@@ -3,18 +3,12 @@ import axios from 'axios';
 import { WeatherData } from '../types/weather';
 
 const fetchWeather = async (city: string): Promise<WeatherData> => {
-  const { data } = await axios.get(`${process.env.VITE_WEATHER_BASE_URL}/data/2.5/weather`, {
-    params: {
-      q: city,
-      appid: process.env.VITE_WEATHER_API_KEY,
-      units: 'metric'
-    }
-  });
+  const { data } = await axios.get(`/api/weather?city=${city}`);
   return data;
 };
 
 export const useWeather = (city: string) => {
   return useQuery(['weather', city], () => fetchWeather(city), {
-    enabled: !!city
+    enabled: !!city,
   });
 };
