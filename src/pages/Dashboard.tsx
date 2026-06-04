@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import SearchBar from '../components/SearchBar';
 import CurrentWeather from '../components/CurrentWeather';
-import ForecastCard from '../components/ForecastCard';
-import WeatherChart from '../components/WeatherChart';
-import WeatherMap from '../components/WeatherMap';
 import { useWeather } from '../hooks/useWeather';
+
+const WeatherMap = dynamic(() => import('../components/WeatherMap'), {
+  ssr: false,
+  loading: () => <p>Loading map...</p>,
+});
 
 const Dashboard: React.FC = () => {
   const [city, setCity] = useState('');

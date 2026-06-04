@@ -8,7 +8,9 @@ const fetchWeather = async (city: string): Promise<WeatherData> => {
 };
 
 export const useWeather = (city: string) => {
-  return useQuery(['weather', city], () => fetchWeather(city), {
+  return useQuery({
+    queryKey: ['weather', city],
+    queryFn: () => fetchWeather(city),
     enabled: !!city,
   });
 };
